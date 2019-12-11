@@ -1,0 +1,53 @@
+<!doctype html>
+<title>CatBook</title>
+<h1>Current Cats</h1>
+There are {{ ads|length }} Cats!
+<table border = '8'>
+	<tr>
+		<th style='text-align:left'>Name</th>
+		<th style='text-align:left'>Description</th>
+		<th style='text-align:left'>Image</th>
+	</tr>
+{% for ad in ads %}
+	<tr>
+		<th style='text-align:left'>{{ ad['name'] }}</th>
+		<th style='text-align:left'>{{ ad['description'] }}</th>
+		<th style='text-align:left'><img src='{{ ad['image_url'] }}'></th>
+	</tr>
+{% endfor %}
+</table>
+<h1>Upload File</h1>
+<ul>
+	{% for message in get_flashed_messages() %}
+	<li>{{ message }}</li>
+	{% endfor %}
+</ul>
+<form method='post' enctype='multipart/form-data' action='/upload'>
+	<table>
+		<tr>
+			<th style='text-align:left'>
+				<label for='name'>Name</label>
+			</th>
+			<th style='text-align:left'>
+				<input type=text name=name>
+			</th>
+		</tr>
+		<tr>
+			<th style='text-align:left'>
+				<label for='description'>Description</label>
+			</th>
+			<th style='text-align:left'>
+				<input type=text name=description><br>
+			</th>
+		</tr>
+		<tr>
+			<th style='text-align:left'>
+				<label for='description'>Select file</label>
+			</th>
+			<th style='text-align:left'>
+				<input type=file name=file><br>
+			</th>
+		</tr>
+	</table>
+	<input type=submit value=Upload>
+</form>
