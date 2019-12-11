@@ -19,7 +19,7 @@ Session(app)
 # RDS configs
 RDS_USER = 'admin'
 RDS_PASSWORD = 'admin2019'
-RDS_HOST = 'cats-db.cfc6dnp2haqb.us-east-1.rds.amazonaws.com '
+RDS_HOST = 'cats-db.cfc6dnp2haqb.us-east-1.rds.amazonaws.com'
 RDS_PORT = 3306
 RDS_DB = 'cats_db'
 

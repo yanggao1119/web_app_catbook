@@ -37,14 +37,13 @@ mkdir -p /tmp/upload_tmp
 # on EC2 instance
 # set up schema by following this: cats_db.up.sql
 
-## Step 5: launch server with command
-# copy server code
-git clone https://github.com/yanggao1119/web_app_catbook.git
-## TODO: run this with nohup, currently I am using screen
-FLASK_APP=~/web_app_catbook/server.py flask run --host=0.0.0.0 --port=8080
+## Step 6: modify code in python with your RDS and S3 config
 
-## Step 6: create credential files on EC2 instance
+## Step 7: create credential files on EC2 instance, boto needs to auth to AWS
 # files
+# Programmatic access for catbook
+# Enables an access key ID and secret access key for the AWS API, CLI, SDK, and other development tools.
+
 # ==> ~/.aws/config <==
 # [default]
 # output = json
@@ -54,5 +53,14 @@ FLASK_APP=~/web_app_catbook/server.py flask run --host=0.0.0.0 --port=8080
 # [default]
 # aws_access_key_id = xxx
 # aws_secret_access_key = xxx
+
+
+## Step 5: launch server with command
+# copy server code
+git clone https://github.com/yanggao1119/web_app_catbook.git
+## TODO: run this with nohup, currently I am using screen
+FLASK_APP=~/web_app_catbook/server.py flask run --host=0.0.0.0 --port=8080
+
+
 
 ## Step 6: test server http://ec2-3-84-34-244.compute-1.amazonaws.com:8080/
