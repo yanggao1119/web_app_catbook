@@ -18,13 +18,13 @@ Session(app)
 
 # RDS configs
 RDS_USER = 'admin'
-RDS_PASSWORD = 'laioffer'
-RDS_HOST = 'ads-db.cfc6dnp2haqb.us-east-1.rds.amazonaws.com'
+RDS_PASSWORD = 'admin2019'
+RDS_HOST = 'cats-db.cfc6dnp2haqb.us-east-1.rds.amazonaws.com '
 RDS_PORT = 3306
-RDS_DB = 'ads_db'
+RDS_DB = 'cats_db'
 
 # S3 configs
-BUCKET_NAME = 'yanggao-ads-upload'
+BUCKET_NAME = 'catbook.awesomecats.com'
 
 # S3 resource setup
 s3 = boto3.resource('s3')
@@ -76,30 +76,29 @@ def s3_get_presigned_url(obj):
     return None
 
 def insert_ad(name, description, image_key):
-  query = "INSERT INTO ads(name, description, image_key) VALUES ('{}', '{}', '{}')".format(name, description, image_key)
+  query = "INSERT INTO cats(name, description, image_key) VALUES ('{}', '{}', '{}')".format(name, description, image_key)
   rds_execute_query(query)
 
-def list_ads():
+def list_cats():
   objs = s3_list_objects()
   obj_url_map = {}
   for obj in objs:
     obj_url_map[obj] = s3_get_presigned_url(obj)
-  ads = []
-  res = rds_execute_query('SELECT * FROM ads')
+  cats = []
+  res = rds_execute_query('SELECT * FROM cats')
   for (name, description, image_key) in res:
-    ads.append({
+    cats.append({
                   'name': name, 
                   'description': description,
                   'image_key': image_key,
                   'image_url': obj_url_map[image_key]
                 })
-  return ads
+  return cats
 
 @app.route('/')
 def index():
-  return render_template('index.html', ads=list_ads())
+  return render_template('index.html', cats=list_cats())
 
-#methods used to be ['GET', 'POST'] before allowing uploading image files
 @app.route('/upload', methods=['POST'])
 def upload():
   if request.method == 'POST':

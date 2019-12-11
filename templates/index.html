@@ -1,18 +1,18 @@
 <!doctype html>
 <title>CatBook</title>
 <h1>Current Cats</h1>
-There are {{ ads|length }} Cats!
+There are {{ cats|length }} Cats!
 <table border = '8'>
 	<tr>
 		<th style='text-align:left'>Name</th>
 		<th style='text-align:left'>Description</th>
 		<th style='text-align:left'>Image</th>
 	</tr>
-{% for ad in ads %}
+{% for cat in cats %}
 	<tr>
-		<th style='text-align:left'>{{ ad['name'] }}</th>
-		<th style='text-align:left'>{{ ad['description'] }}</th>
-		<th style='text-align:left'><img src='{{ ad['image_url'] }}'></th>
+		<th style='text-align:left'>{{ cat['name'] }}</th>
+		<th style='text-align:left'>{{ cat['description'] }}</th>
+		<th style='text-align:left'><img src='{{ cat['image_url'] }}'></th>
 	</tr>
 {% endfor %}
 </table>

@@ -27,15 +27,24 @@ sudo pip install mysqlclient
 sudo pip install awscli
 sudo pip install boto3
 
-## craete a temp dir to store temp uploaded files
+## Step 4: create a temp dir to store temp uploaded files
 mkdir -p /tmp/upload_tmp
 
-## launch server with command
-git clone https://github.com/yanggao1119/laioffer_cloud_computing.git
-## TODO: run this with nohup, currently I am using screen
-FLASK_APP=~/laioffer_cloud_computing/toy_project/server.py flask run --host=0.0.0.0 --port=8080
+## Step 5: create RDS instance on AWS RDS console
+## with identifier: cats-db
+## username: admin
+## password: admin2019
+# on EC2 instance
+# set up schema by following this: cats_db.up.sql
 
-## create files 
+## Step 5: launch server with command
+# copy server code
+git clone https://github.com/yanggao1119/web_app_catbook.git
+## TODO: run this with nohup, currently I am using screen
+FLASK_APP=~/web_app_catbook/server.py flask run --host=0.0.0.0 --port=8080
+
+## Step 6: create credential files on EC2 instance
+# files
 # ==> ~/.aws/config <==
 # [default]
 # output = json
@@ -46,4 +55,4 @@ FLASK_APP=~/laioffer_cloud_computing/toy_project/server.py flask run --host=0.0.
 # aws_access_key_id = xxx
 # aws_secret_access_key = xxx
 
-## test server http://ec2-3-87-22-58.compute-1.amazonaws.com:8080/
+## Step 6: test server http://ec2-3-84-34-244.compute-1.amazonaws.com:8080/
