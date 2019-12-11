@@ -1,8 +1,8 @@
 <!doctype html>
 <title>CatBook</title>
-<h1>Current Cats</h1>
+<h1>CatBook</h1>
 There are {{ cats|length }} Cats!
-<table border = '8'>
+<table border = '4'>
 	<tr>
 		<th style='text-align:left'>Name</th>
 		<th style='text-align:left'>Description</th>
@@ -12,7 +12,7 @@ There are {{ cats|length }} Cats!
 	<tr>
 		<th style='text-align:left'>{{ cat['name'] }}</th>
 		<th style='text-align:left'>{{ cat['description'] }}</th>
-		<th style='text-align:left'><img src='{{ cat['image_url'] }}'></th>
+		<th style='text-align:left'><img src='{{ cat['image_url'] }} width='500' height='600'></th>
 	</tr>
 {% endfor %}
 </table>
