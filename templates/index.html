@@ -12,7 +12,7 @@ There are {{ cats|length }} Cats!
 	<tr>
 		<th style='text-align:left'>{{ cat['name'] }}</th>
 		<th style='text-align:left'>{{ cat['description'] }}</th>
-		<th style='text-align:left'><img src='{{ cat['image_url'] }} width='500' height='600'></th>
+		<th style='text-align:left'><img src='{{ cat['image_url'] }}' width='500' height='600'></th>
 	</tr>
 {% endfor %}
 </table>
