@@ -75,7 +75,7 @@ def s3_get_presigned_url(obj):
     print(err)
     return None
 
-def insert_ad(name, description, image_key):
+def insert_cat(name, description, image_key):
   query = "INSERT INTO cats(name, description, image_key) VALUES ('{}', '{}', '{}')".format(name, description, image_key)
   rds_execute_query(query)
 
@@ -116,5 +116,5 @@ def upload():
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], image_key)
         file.save(file_path)
         s3_upload_file(file_path, image_key)
-        insert_ad(request.form['name'], request.form['description'], image_key)
+        insert_cat(request.form['name'], request.form['description'], image_key)
   return redirect(url_for('index'))
