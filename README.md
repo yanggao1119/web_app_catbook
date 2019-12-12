@@ -1,2 +1,5 @@
 # web_app_catbook
-demo code for setting up a simple Python web server with Flask and AWS
+
+Follow run-setup.sh to set up a simple Python web service with Flask and AWS EC2/RDS/S3
+
+Have a lot of fun!
